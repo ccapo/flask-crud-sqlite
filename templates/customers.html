@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h4>Customers</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>UUID</th>
+          <th>Region</th>
+          <th>Platforms</th>
+          <th>VDI</th>
+          <th>Auto-Deferral</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.uuid }}</td>
+          <td>{{ customer.region }}</td>
+          <td>{{ customer.platforms }}</td>
+          <td>{{ customer.vdi | bool_transform }}</td>
+          <td>{{ customer.autodeferral | bool_transform }}</td>
+          <!-- <td class="text-right"><a class="btn btn-info btn-sm" href="/customers/update/{{ customer.id }}" role="button">Update</a></td> -->
+          <td class="text-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-sm-12 my-1">
+          <label for="vdi">VDI</label>
+          <select class="form-control" id="vdi">
+            <option>False</option>
+            <option>True</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-12 my-1">
+          <label for="autodeferral">Auto-Deferral</label>
+          <select class="form-control" id="autodeferral">
+            <option>False</option>
+            <option>True</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

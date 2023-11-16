@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h4 class="col-sm-4 my-3">Update Rollout</h4>
+    <form action="/assignment/update/release/rollout" method="POST">
+      <div class="form-group col-sm-12 my-1">
+        <label for="version">Installer Version</label>
+        <input type="text" class="form-control" name="name" id="version" placeholder="Installer Version">
+      </div>
+      <div class="form-group col-sm-12 my-1">
+        <label for="platform">Installer Platform</label>
+        <select class="form-control" id="platform">
+          <option>windows</option>
+          <option>linux</option>
+          <option>mac</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-12 my-1">
+        <label for="phase">Rollout Phase</label>
+        <select class="form-control" id="phase">
+          <option>Phase 0</option>
+          <option>Phase 1</option>
+          <option>Phase 2</option>
+          <option>Phase 3</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-12 my-1">
+        <label for="status">Assignment Status</label>
+        <select class="form-control" id="status">
+          <option>inactive</option>
+          <option>active</option>
+        </select>
+      </div>
+      <div class="col-sm-2 my-3">
+        <button type="submit" class="btn btn-primary btn-block">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

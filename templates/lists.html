@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h4>Release Phases</h4>
+    {% for list in lists %}
+    <p><a class="btn btn-primary btn-sm" href="{{ list.query }}" role="button">{{ list.name }}</a> {{ list.description }}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h4>{{ linfo.name }} - {{ linfo.description }}</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>UUID</th>
+          <th>Region</th>
+          <th>Platforms</th>
+          <th>VDI</th>
+          <th>Auto-Deferred</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.uuid }}</td>
+          <td>{{ customer.region }}</td>
+          <td>{{ customer.platforms }}</td>
+          <td>{{ customer.vdi | bool_transform }}</td>
+          <td>{{ customer.autodeferral | bool_transform }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
