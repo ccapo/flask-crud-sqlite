@@ -4,3 +4,7 @@ services:
         build: .
         ports:
             - "5050:5050"
+        volumes:
+            - type: bind
+              source: ./
+              target: /app
